@@ -74,3 +74,10 @@ So you should add this line in your nginx config:
 ```
 ssl_dhparam /etc/ssl/dhparam.pem;
 ```
+## Thank
+
+[@kn007](https://github.com/kn007/patch)
+
+[@akafeng](https://github.com/akafeng/docker-nginx)
+
+[@macbre](https://www.github.com/macbre/docker-nginx-http3)
