@@ -35,6 +35,6 @@ jobs:
         with:
           push: true
           cache-from: type=gha
-          outputs: type=local
+          # outputs: type=local
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}

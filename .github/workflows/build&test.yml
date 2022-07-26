@@ -21,6 +21,7 @@ jobs:
         # files: ./Dockerfile
         tags: justf/nginx-http2-brotli
         cache-to: type=gha,mode=max
+        outputs: type=local
 
     - name: Run nginx -V
       run: |
