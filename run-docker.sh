@@ -1,5 +1,4 @@
 #!/bin/sh
-git clone --branch dev https://github.com/InsulateJustf/docker-nginx-http2-brotli /tmp/nginx
 docker run --rm \
   -p 0.0.0.0:8888:80 \
   -p 0.0.0.0:8889:443/tcp \

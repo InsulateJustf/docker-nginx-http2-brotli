@@ -45,7 +45,8 @@ jobs:
 
     - name: Create signed TLS certificates for localhost
       run: |
-        mkcert -cert-file /tmp/nginx/tests/localhostlocalhost.crt -key-file /tmp/nginx/tests/localhostlocalhost.key localhost 0.0.0.0 ::1
+        git clone --branch dev https://github.com/InsulateJustf/docker-nginx-http2-brotli /tmp/nginx
+        mkcert -cert-file /tmp/nginx/tests/localhost.crt -key-file /tmp/nginx/tests/localhost.key localhost 0.0.0.0 ::1
     
     - name: Serve a static asset
       run: |
