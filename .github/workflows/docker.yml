@@ -46,7 +46,7 @@ jobs:
       run: |
         # expand commands
         set -x
-        
+
         ./run-docker.sh &
 
         sleep 2; docker ps
@@ -55,12 +55,6 @@ jobs:
         grep --fixed-strings --invert-match -i '< Server: nginx' /tmp/out > /dev/null
         grep --fixed-strings '< Content-Encoding: br' /tmp/out
         grep --fixed-strings '<p>It works!</p>' /tmp/out
-
-        curl -v --compressed localhost:8888/FooBar 2>&1 | tee /tmp/out
-
-        grep --fixed-strings 'HTTP/1.1 301 Moved Permanently' /tmp/out
-        grep --fixed-strings '< x-rewrite: 1' /tmp/out
-        grep --fixed-strings '< Location: http://localhost/foobar' /tmp/out
 
         curl -v --compressed https://localhost:8889 2>&1 | tee /tmp/h2
 
