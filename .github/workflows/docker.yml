@@ -46,7 +46,8 @@ jobs:
       run: |
         # expand commands
         set -x
-        
+
+        chmod +x ./run-docker.sh &
         ./run-docker.sh &
 
         sleep 2; docker ps
