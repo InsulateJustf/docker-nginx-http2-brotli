@@ -42,7 +42,7 @@ jobs:
       run: |
         mkcert -cert-file tests/localhost.crt -key-file tests/localhost.key localhost 0.0.0.0 ::1
     
-    -- name: Serve a static asset
+    - name: Serve a static asset
       run: |
         set -x
 
