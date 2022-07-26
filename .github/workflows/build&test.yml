@@ -20,8 +20,8 @@ jobs:
         context: .
         # files: ./Dockerfile
         tags: justf/nginx-http2-brotli
-        cache-to: type=gha,mode=max
-        outputs: type=local,dest=/tmp/.buildx-output
+        # cache-to: type=gha,mode=max
+        # outputs: type=local,dest=/tmp/.buildx-output
 
     - name: Run nginx -V
       run: |
