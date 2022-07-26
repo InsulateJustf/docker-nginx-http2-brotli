@@ -19,11 +19,9 @@ jobs:
       with:
         context: .
         load: true
-        # push: true
         # files: ./Dockerfile
         tags: justf/nginx-http2-brotli
-        # cache-to: type=gha,mode=max
-        # outputs: type=cacheonly
+        cache-to: type=gha,mode=max
 
     - name: Run nginx -V
       run: |
@@ -45,8 +43,6 @@ jobs:
 
     - name: Create signed TLS certificates for localhost
       run: |
-        echo $PWD 
-        ls -la
         mkcert -cert-file tests/localhost.crt -key-file tests/localhost.key localhost 0.0.0.0 ::1
     
     - name: Serve a static asset
