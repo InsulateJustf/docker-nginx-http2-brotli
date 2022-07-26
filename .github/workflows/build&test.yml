@@ -17,8 +17,7 @@ jobs:
         context: .
         # files: ./Dockerfile
         tags: justf/nginx-http2-brotli
-        cache-from: |
-          ghcr.io/InsulateJustf/nginx-http2-brotil:latest
+        cache-to: type=gha, mode=max
 
     - name: Run nginx -V
       run: |
