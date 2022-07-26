@@ -18,10 +18,12 @@ jobs:
       uses: docker/build-push-action@v3.1.0
       with:
         context: .
+        load: true
+        # push: true
         # files: ./Dockerfile
         tags: justf/nginx-http2-brotli
         # cache-to: type=gha,mode=max
-        # outputs: type=local,dest=/tmp/.buildx-output
+        # outputs: type=cacheonly
 
     - name: Run nginx -V
       run: |
