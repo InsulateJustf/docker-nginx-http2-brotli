@@ -10,5 +10,5 @@ docker run --rm \
   -v "$PWD/tests/https.conf":/etc/nginx/conf.d/https.conf:ro \
   -v "$PWD/tests/localhost.crt":/etc/nginx/ssl/localhost.crt:ro \
   -v "$PWD/tests/localhost.key":/etc/nginx/ssl/localhost.key:ro \
- --name test_nginx \
-  -t macbre/nginx
+  --name test_nginx \
+  -t justf/nginx-http2-brotli
