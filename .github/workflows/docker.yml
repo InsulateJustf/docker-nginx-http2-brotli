@@ -1,0 +1,25 @@
+name: Build Docker Image
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build the Nginx Docker
+      uses: docker/build-push-action@v3.1.0
+      with:
+        context: .
+        files: ./Dockerfile
+        tags: justf/nginx-http2-brotli
+        cache-from: |
+          ghcr.io/InsulateJustf/nginx-http2-brotil:latest
+
+    - name: Run nginx -V
+      run: |
+        docker run -t justf/nginx-http2-brotli nginx -V | sed 's/\-\-/\n\t--/g' | tee
