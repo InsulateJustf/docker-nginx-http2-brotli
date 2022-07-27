@@ -213,7 +213,7 @@ RUN \
 		--add-module=/usr/src/nginx-http-flv-module \
 		--add-module=/usr/src/ngx_http_substitutions_filter_module \
 		--with-openssl=/usr/src/openssl-${OPENSSL_VERSION} \
-		--with-openssl-opt="zlib enable-tls1_3 enable-weak-ssl-ciphers enable-ec_nistp_64_gcc_128 -ljemalloc -march=native -Wl,-flto" \
+		--with-openssl-opt="zlib enable-tls1_3 enable-weak-ssl-ciphers enable-ec_nistp_64_gcc_128  -ljemalloc -Wl,-flto" \
 	&& make -j$(getconf _NPROCESSORS_ONLN)
 
 RUN \
