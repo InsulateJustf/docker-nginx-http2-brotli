@@ -1,5 +1,4 @@
 #!/bin/sh
-ls -la $PWD
 docker run --rm \
   -p 0.0.0.0:8888:80 \
   -p 0.0.0.0:8889:443/tcp \
