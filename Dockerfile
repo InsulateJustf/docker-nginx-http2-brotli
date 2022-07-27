@@ -16,6 +16,10 @@ ARG OPENSSL_PATCH="https://raw.githubusercontent.com/kn007/patch/master/openssl-
 # zlib by cloudflare
 ARG ZLIB_URL="https://github.com/cloudflare/zlib.git"
 
+# jemalloc
+ARG JEMALLOC_VERSION=5.3.0
+ARG JEMALLOC_URL="https://github.com/jemalloc/jemalloc/releases/download/${JEMALLOC_VERSION}/jemalloc-${JEMALLOC_VERSION}.tar.bz2"
+
 # brotil
 ARG BROTLI_URL="https://github.com/eustas/ngx_brotli"
 
@@ -50,7 +54,6 @@ RUN \
 		musl-dev \
 		go \
 		mercurial \
-		openssl-dev \
 		pcre-dev \
 		zlib-dev \
 		linux-headers \
@@ -83,7 +86,7 @@ RUN \
   && wget -O openssl-${OPENSSL_VERSION}.tar.gz ${OPENSSL_URL} \
   && tar -xzvf openssl-${OPENSSL_VERSION}.tar.gz \
   && cd /usr/src/openssl-${OPENSSL_VERSION} \
-  && curl ${OPENSSL_PATCH} | patch -f -p1
+  && curl ${OPENSSL_PATCH} | patch -p1
 
 RUN \
   echo "Cloning nginx $NGINX_VERSION ..." \
@@ -91,8 +94,8 @@ RUN \
   && tar -xzvf nginx.tar.gz -C /usr/src \
   && rm -f nginx.tar.gz \
   && cd /usr/src/nginx-${NGINX_VERSION} \
-  && curl ${NGINX_PATCH} | patch -f -p1 \
-  && curl ${NGINX_CRYPT_PATCH} | patch -f -p1
+  && curl ${NGINX_PATCH} | patch -p1 \
+  && curl ${NGINX_CRYPT_PATCH} | patch -p1
 
 RUN \
   echo "Cloning ngx_http2_geoip2_module ..." \
@@ -141,6 +144,15 @@ RUN \
   && cd /usr/src \
   && wget -O pcre-${PCRE_VERSION}.tar.gz ${PCRE_URL} \
   && tar -xzvf pcre-${PCRE_VERSION}.tar.gz
+
+RUN \
+  echo "Downloading and build jemalloc" \
+  && cd /usr/src \
+  && wget -O jemalloc.tar.gz ${JEMALLOC_URL} \
+  && tar -xvf jemalloc.tar.gz\
+  && cd jemalloc-${JEMALLOC_VERSION} \
+  && ./configure \
+  && make install -j$(nproc)
 
 RUN \
 	echo "Building nginx ..." \
@@ -200,7 +212,8 @@ RUN \
 		--add-module=/usr/src/ngx_http_geoip2_module \
 		--add-module=/usr/src/nginx-http-flv-module \
 		--add-module=/usr/src/ngx_http_substitutions_filter_module \
-		--with-openssl-opt="zlib enable-weak-ssl-ciphers enable-ec_nistp_64_gcc_128 -ljemalloc -Wl,-flto" \
+		--with-openssl=/usr/src/openssl-${OPENSSL_VERSION} \
+		--with-openssl-opt="zlib enable-tls1_3 enable-weak-ssl-ciphers enable-ec_nistp_64_gcc_128 -ljemalloc -march=native -Wl,-flto" \
 	&& make -j$(getconf _NPROCESSORS_ONLN)
 
 RUN \
