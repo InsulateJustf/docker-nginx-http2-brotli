@@ -5,7 +5,7 @@
 <p align="center">A web server that can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache.</p>
 
 <p align="center">
-<img src="https://github.com/InsulateJustf/docker-nginx-http2-brotli/actions/workflows/build&test.yml/badge.svg?branch=main&event=release" />
+<img src="https://github.com/InsulateJustf/docker-nginx-http2-brotli/actions/workflows/push.yml/badge.svg" />
 <img src="https://img.shields.io/github/v/release/InsulateJustf/docker-nginx-http2-brotli" />
 </p>
 
