@@ -124,7 +124,7 @@ RUN \
   && tar -xf headers-more-nginx-module.tar.gz
 
 RUN \
-  echo "Downloading libatomic_ops ..." \0.
+  echo "Downloading libatomic_ops ..." 
   && cd /usr/src \
   && wget -O libatomic_ops-${LIBATOMIC_VERSION}.tar.gz ${LIBATOMIC_URL} \
   && tar -xzvf libatomic_ops-${LIBATOMIC_VERSION}.tar.gz \
