@@ -1,4 +1,4 @@
-ARG NGINX_VERSION=1.23.1
+ARG NGINX_VERSION=1.23.3
 
 FROM alpine:3.14 AS base
 LABEL maintainer="NGINX Docker Maintainers <docker-maint@nginx.com>"
@@ -9,7 +9,7 @@ ARG NGINX_PATCH="https://raw.githubusercontent.com/kn007/patch/master/nginx.patc
 ARG NGINX_CRYPT_PATCH="https://raw.githubusercontent.com/kn007/patch/master/use_openssl_md5_sha1.patch"
 
 # openssl
-ARG OPENSSL_VERSION="1.1.1q"
+ARG OPENSSL_VERSION="1.1.1s"
 ARG OPENSSL_URL="https://www.openssl.org/source/openssl-$OPENSSL_VERSION.tar.gz"
 ARG OPENSSL_PATCH="https://raw.githubusercontent.com/kn007/patch/master/openssl-1.1.1.patch"
 
@@ -33,7 +33,7 @@ ARG GEOIP2_VERSION=3.4
 ARG PCRE_VERSION="8.45"
 ARG PCRE_URL="https://downloads.sourceforge.net/project/pcre/pcre/${PCRE_VERSION}/pcre-${PCRE_VERSION}.tar.gz"
 
-ARG LIBATOMIC_VERSION="7.6.12"
+ARG LIBATOMIC_VERSION="7.6.14"
 ARG LIBATOMIC_URL="https://github.com/ivmai/libatomic_ops/releases/download/v${LIBATOMIC_VERSION}/libatomic_ops-${LIBATOMIC_VERSION}.tar.gz"
 
 ARG HTTP_FLV_URL="https://github.com/winshining/nginx-http-flv-module.git"
