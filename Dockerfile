@@ -9,7 +9,7 @@ ARG NGINX_PATCH="https://raw.githubusercontent.com/kn007/patch/master/nginx.patc
 ARG NGINX_CRYPT_PATCH="https://raw.githubusercontent.com/kn007/patch/master/use_openssl_md5_sha1.patch"
 
 # openssl
-ARG OPENSSL_VERSION="1.1.1s"
+ARG OPENSSL_VERSION="1.1.1r"
 ARG OPENSSL_URL="https://www.openssl.org/source/openssl-$OPENSSL_VERSION.tar.gz"
 ARG OPENSSL_PATCH="https://raw.githubusercontent.com/kn007/patch/master/openssl-1.1.1.patch"
 
