@@ -201,7 +201,6 @@ RUN \
 		--with-compat \
 		--with-file-aio \
 		--with-http_v2_module \
-		--with-http_v2_hpack_enc \
 		--with-zlib=/usr/src/zlib \
 		--with-pcre=/usr/src/pcre-${PCRE_VERSION} \
 		--with-pcre-jit \
