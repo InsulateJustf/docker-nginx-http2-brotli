@@ -5,7 +5,7 @@ LABEL maintainer="NGINX Docker Maintainers <justf>"
 
 # https://nginx.org/en/download.html
 ARG NGINX_VERSION
-ARG NGINX_PATCH="https://raw.githubusercontent.com/kn007/patch/master/nginx.patch"
+ARG NGINX_PATCH="https://raw.githubusercontent.com/kn007/patch/master/nginx_dynamic_tls_records.patch"
 ARG NGINX_CRYPT_PATCH="https://raw.githubusercontent.com/kn007/patch/master/use_openssl_md5_sha1.patch"
 
 # openssl
